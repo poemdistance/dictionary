@@ -49,7 +49,7 @@ void loadstorage(char ***stor, int *initials, int *lines, char *stor_book)
 			flag++;
 			*stor = (char **)realloc(*stor, sizeof(char *) * 200 * flag);
 			for(i=200 * (flag-1); i<*lines+200; i++)
-				(*stor)[i] = (char *)calloc(1, sizeof(char) * 50);
+				(*stor)[i] = (char *)calloc(1, sizeof(char) * WORD_LENGTH);
 		}
 
 		i = *lines;

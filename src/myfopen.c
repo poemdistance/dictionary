@@ -29,9 +29,6 @@ void myfopen(FILE **fp, char *name, char *mode, char *funcname)
 				exit(1);
 			}
 		}
-		else 
-			fprintf(log, "%s exit, will not create it\n", name);
-
 	}
 
 	else if(strcmp(mode, "r") == 0)
@@ -70,9 +67,6 @@ void myfopen(FILE **fp, char *name, char *mode, char *funcname)
 			}
 		}
 	}
-
-	if(*fp != NULL)
-		fprintf(log, "function %s, open %s \'%s\' successful\n", funcname, name, mode);
 
 	fclose(log);
 }

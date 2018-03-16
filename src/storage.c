@@ -6,14 +6,15 @@
  *program
  * */
 
-void storage(Voc *result, char **stor, int *lines, char **buf, char *stor_book)
+void storage(Voc *result, char ***stor, int *lines, char **buf, char *stor_book)
 {
 
 	int i = 0;
+	int num = 0;
 
 	for(i=0; i<*lines; i++)
 	{
-		if(strcmp(stor[i], result->source) == 0)
+		if(strcmp((*stor)[i], result->source) == 0)
 		{
 			printf("\n\tYou have storaged this word before\n");
 			return;
@@ -27,7 +28,26 @@ void storage(Voc *result, char **stor, int *lines, char **buf, char *stor_book)
 	if(fprintf(fp, "%s\t%s\n", result->source, result->trans) < 0)
 		printf("write error in storage function, let it go\n");
 	else 
+	{
 		printf("\tstoraged '%s' successful\n", result->source);
+
+		/*plus 1 to avoid to apply for the memory duplicately when the number of lines
+		 *is just 200, 400...*/
+		(*lines)++;
+
+		if(*lines % 200 == 0)
+		{
+			num = *lines / 200 + 1;
+			*stor = (char **)realloc(*stor, sizeof(char *) * 200 * num);
+			for(i=200 * (num-1); i<*lines+200; i++)
+				(*stor)[i] = (char *)calloc(1, sizeof(char) * WORD_LENGTH);
+		}
+
+		i = *lines - 1;
+
+		//storage the new word to 'stor'
+		strcpy((*stor)[i], result->source);
+	}
 
 	fclose(fp);
 }

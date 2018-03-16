@@ -11,15 +11,16 @@
 #include <stdlib.h>
 
 #define RESULT_NUM 50
+#define WORD_LENGTH 30
+#define TRANS_LENGTH 200
 
 typedef struct Storage Stor;
 typedef struct Vocabularies Voc;
 
-//storage some imformation of vocabularies's 
 struct Vocabularies
 {
-	char source[30];
-	char trans[200];
+	char source[WORD_LENGTH];
+	char trans[TRANS_LENGTH];
 };
 
 extern int getindex(char initials);
@@ -31,7 +32,7 @@ extern void writeinfo(Voc **voc, int *initials, char *source);
 extern void handlesource(char *source, char *wordbook);
 extern void readin(Voc ***voc, int *initials, char *wordbook);
 extern void search(Voc **voc, int *initials, char *word, int *num, Voc ***result, int *sure);
-extern void storage(Voc *result, char **stor, int *lines, char **buff, char *stor_book);
+extern void storage(Voc *result, char ***stor, int *lines, char **buff, char *stor_book);
 extern void loadstorage(char ***word, int *initials, int *lines, char *stor_book);
 extern void myfopen(FILE **fp, char *name, char *mode, char *funcname);
 extern void print_initials(int *initials);

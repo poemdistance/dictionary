@@ -1,5 +1,7 @@
 #include "mydefine.h"
 
+/***************Test code**************/
+
 int numsort(const void *a, const void *b)
 {
 	int *ia = (int *)a;

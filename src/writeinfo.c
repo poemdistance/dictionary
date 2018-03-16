@@ -7,6 +7,7 @@
 void writeinfo(Voc **voc, int *initials, char *wordbook)
 {
 	FILE *fpw = NULL;
+	int i = 0;
 
 	myfopen(&fpw, wordbook, "w", "writeinfo");
 	assert(fpw != NULL);
@@ -18,7 +19,7 @@ void writeinfo(Voc **voc, int *initials, char *wordbook)
 		exit(1);
 	}
 
-	for(int i=0; i<26; i++)
+	for(i=0; i<26; i++)
 	{
 			if(fwrite(voc[i], sizeof(Voc), initials[i], fpw) != initials[i])
 			{

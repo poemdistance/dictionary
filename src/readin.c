@@ -1,7 +1,5 @@
 #include "mydefine.h"
 
-/*Hey, guys, I know it is crazy, but trust me it is not so difficult to understand*/
-
 /*It is a function which can read the imformation from file ".wordbook" and storage it 
  *to the struct vocabularies(Voc) in memory we calloc*/
 
