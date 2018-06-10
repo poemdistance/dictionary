@@ -16,7 +16,7 @@ void storage(Voc *result, char ***stor, int *lines, char **buf, char *stor_book)
 	{
 		if(strcmp((*stor)[i], result->source) == 0)
 		{
-			printf("\n\tYou have storaged this word before\n");
+			printf("\tYou have storaged this word before\n");
 			return;
 		}
 	}
@@ -29,7 +29,7 @@ void storage(Voc *result, char ***stor, int *lines, char **buf, char *stor_book)
 		printf("write error in storage function, let it go\n");
 	else 
 	{
-		printf("\tstoraged '%s' successful\n", result->source);
+		//printf("\tstoraged '%s' successful\n", result->source);
 
 		/*plus 1 to avoid to apply for the memory duplicately when the number of lines
 		 *is just 200, 400...*/

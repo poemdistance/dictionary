@@ -119,9 +119,9 @@ void search_en(Voc **voc, int *initials, char *word, int n, Voc ***result, int *
 			if(!flag)
 			{
 				flag = 1; 
-				printf("\n %s didn't find. Did you mean: ", word);
+				printf("\n\t%s didn't find. Did you mean:\n\n", word);
 			}
-			printf("\n\t%d: %s\t%s\n", i, (*result)[i]->source, (*result)[i]->trans);
+			printf("\t%d: %s\t%s\n", i, (*result)[i]->source, (*result)[i]->trans);
 		}
 
 		if(!flag)
