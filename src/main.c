@@ -16,9 +16,9 @@ int main(int argc, char **argv)
 	 *由源文件source读入并处理生成; source 为单词源文件，可自行网上下载
 	 *也可直接使用word/下的;stor_book为查询后自动保存单词的文件位置
 	 */
-	char wordbook[] = ".wordbook";
-	char source[] = "../word/word";
-	char stor_book[] = "./storage";
+	char wordbook[] = "/home/magnolia/Dropbox/wordbook/.wordbook";
+	char source[] = "/home/magnolia/Dropbox/wordbook/100thoundswords";
+	char stor_book[] = "/home/magnolia/Dropbox/wordbook/storage";
 
 	int i = 0;
 	int flag = 0;
