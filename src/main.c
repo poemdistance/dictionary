@@ -1,4 +1,6 @@
 #include "mydefine.h"
+#include <readline/readline.h>
+#include <readline/history.h>
 
 int main(int argc, char **argv)
 {
@@ -80,10 +82,8 @@ int main(int argc, char **argv)
 	printf("time = %.4f\n", ((1.0 * finish.tv_sec - start.tv_sec) * 1000000000 \
 				+ (finish.tv_nsec - start.tv_nsec)) / 1000000000);
 
-	printf("\n>>  ");
-	char word[500];
-
-	memset(word, 0, sizeof(word));
+	//printf("\n>>  ");
+	char *word;
 
 	/*Using 'test' to determine whether we should storage word we refer or not,
 	 *when add test parameter like this: ./a.out test, it will not storage any word we refer*/
@@ -95,18 +95,19 @@ int main(int argc, char **argv)
 	int n = 0;
 	int sure = 0;
 	char *p = NULL;
-	while(fgets(word, sizeof(word), stdin))
+	while( ( word = readline(">> ") ) )
 	{
-		if(strcmp(word, "q\n") == 0)
+		if(strcmp(word, "q") == 0)
 		{
 			printf("\n\tThanks for using. Good bye~ ^_^ \n\n");
+            free(word);
 			break;
 		}
 
 		//Check whether input character is '\n' or '/' or not, if so, skip it 
 		if(strcmp(word, "\n") == 0 || strcmp(word, "/\n") == 0)
 		{
-			printf("\n>>  ");
+			//printf("\n>>  ");
 			for(i=0; i<RESULT_NUM; i++)
 				memset(result[i], 0, sizeof(Voc));
 			continue;
@@ -141,7 +142,7 @@ int main(int argc, char **argv)
 					printf("\tNo result to storage\n");
 				else
 					printf("\tn out of bound\n");
-				printf(">> ");
+				//printf(">> ");
 				continue;
 			}
 			flag = 0;
@@ -159,7 +160,7 @@ int main(int argc, char **argv)
 		if(num >= 1 && !flag && test && sure)
 			storage(result[n], &stor, &lines, buff, stor_book);
 
-		printf("\n>>  ");
+		//printf("\n>>  ");
 		memset(word, 0, sizeof(word));
 	}
 
